@@ -56,19 +56,17 @@
 
   .topbar{
     display:flex; align-items:center; justify-content:space-between;
-    gap:12px; padding-block:6px;
+    gap:12px; padding-block:6px; flex-wrap:wrap;
   }
   .brand{display:flex; align-items:center; gap:8px;}
   .brand-mark{
-    width:32px; height:32px; display:block;
+    width:52px; height:52px; display:block;
   }
   .brand-mark img{width:100%; height:100%; object-fit:contain; display:block;}
-  .brand-name{font-weight:700; font-size:14px; letter-spacing:.01em;}
-  .brand-name small{display:block; font-weight:500; font-size:10.5px; color:var(--ink-faint); letter-spacing:.04em;}
   .topbar a.call{
-    font-size:12.5px; font-weight:600; color:var(--brick);
-    text-decoration:none; border:1px solid var(--line); padding:7px 12px;
-    border-radius:999px; background:var(--surface);
+    font-size:12.5px; font-weight:600; color:var(--gold-ink);
+    text-decoration:none; border:1px solid var(--gold); padding:7px 12px;
+    border-radius:999px; background:var(--gold);
   }
 
   .badge-row{display:flex; flex-wrap:wrap; gap:8px;}
@@ -78,6 +76,7 @@
     background:var(--surface);
   }
   .badge.brick{ background:var(--brick); color:var(--brick-ink); border-color:var(--brick); }
+  .badge.gold{ background:var(--gold); color:var(--gold-ink); border-color:var(--gold); }
 
   .hero h1{font-size:clamp(26px,6.2vw,34px); line-height:1.14; margin-top:10px;}
   .hero .loc{font-size:14.5px; color:var(--ink-soft); margin-top:8px;}
@@ -171,7 +170,7 @@
 
   .official-btn{
     display:flex; align-items:center; justify-content:center; gap:8px;
-    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+    border:1px solid var(--gold); background:var(--gold); color:var(--gold-ink);
     text-decoration:none; font-weight:600; font-size:14px; padding:12px 14px; border-radius:12px;
   }
 
@@ -195,17 +194,16 @@
 
   <div class="topbar">
     <div class="brand">
-      <div class="brand-mark"><img src="logo.png" alt="Logo PIJ Property"></div>
-      <div class="brand-name">PIJ Property<small>Development</small></div>
+      <div class="brand-mark"><img src="logo.png" alt="PIJ Property Development"></div>
     </div>
-    <a class="call" href="tel:0722663666">07-226 6366</a>
+    <a class="call" href="tel:0722663666">07-226 6366 &middot; 012-434 6073</a>
   </div>
 
   <div class="hero">
     <div class="badge-row">
       <span class="badge brick">Unit Terhad</span>
-      <span class="badge">RMMJ-D</span>
-      <span class="badge">Rezab Melayu</span>
+      <span class="badge gold">RMMJ-D</span>
+      <span class="badge gold">Rezab Melayu</span>
     </div>
     <h1>Rumah Teres 2 Tingkat di Rengit</h1>
     <div class="loc">Taman Perbadanan Islam, Rengit (DUN Rengit) &middot; Johor Darul Ta&rsquo;zim</div>
