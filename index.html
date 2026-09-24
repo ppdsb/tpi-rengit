@@ -1,0 +1,313 @@
+<title>Rumah Teres Rengit</title>
+<style>
+  :root{
+    --bg:#F8FAFC; --surface:#FFFFFF; --surface-2:#F1F5F9;
+    --ink:#0F172A; --ink-soft:#475569; --ink-faint:#94A3B8;
+    --brick:#106F54; --brick-dark:#0B4F3C; --brick-ink:#FFFFFF;
+    --forest:#106F54; --forest-soft:#E3F3ED;
+    --gold:#F5E03B; --gold-ink:#1F2417;
+    --line:#E2E8F0;
+    --radius:14px;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0F172A; --surface:#1E293B; --surface-2:#243247;
+      --ink:#F1F5F9; --ink-soft:#CBD5E1; --ink-faint:#94A3B8;
+      --brick:#34C795; --brick-dark:#106F54; --brick-ink:#04140F;
+      --forest:#34C795; --forest-soft:#123324;
+      --gold:#F7E75C; --gold-ink:#1F2417;
+      --line:#334155;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0F172A; --surface:#1E293B; --surface-2:#243247;
+    --ink:#F1F5F9; --ink-soft:#CBD5E1; --ink-faint:#94A3B8;
+    --brick:#34C795; --brick-dark:#106F54; --brick-ink:#04140F;
+    --forest:#34C795; --forest-soft:#123324;
+    --gold:#F7E75C; --gold-ink:#1F2417;
+    --line:#334155;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Inter", system-ui, -apple-system, sans-serif;
+    padding-inline:16px;
+    padding-block:28px;
+  }
+  h1,h2,h3{
+    font-family:"Manrope", system-ui, -apple-system, sans-serif;
+    font-weight:700;
+    text-wrap:balance;
+    margin:0;
+  }
+  .wrap{max-width:640px; margin-inline:auto; display:flex; flex-direction:column; gap:22px;}
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; padding-block:6px;
+  }
+  .brand{display:flex; align-items:center; gap:8px;}
+  .brand-mark{
+    width:32px; height:32px; display:block;
+  }
+  .brand-mark img{width:100%; height:100%; object-fit:contain; display:block;}
+  .brand-name{font-weight:700; font-size:14px; letter-spacing:.01em;}
+  .brand-name small{display:block; font-weight:500; font-size:10.5px; color:var(--ink-faint); letter-spacing:.04em;}
+  .topbar a.call{
+    font-size:12.5px; font-weight:600; color:var(--brick);
+    text-decoration:none; border:1px solid var(--line); padding:7px 12px;
+    border-radius:999px; background:var(--surface);
+  }
+
+  .badge-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .badge{
+    font-size:11.5px; font-weight:600; letter-spacing:.03em; text-transform:uppercase;
+    padding:5px 10px; border-radius:999px; border:1px solid var(--line); color:var(--ink-soft);
+    background:var(--surface);
+  }
+  .badge.brick{ background:var(--brick); color:var(--brick-ink); border-color:var(--brick); }
+
+  .hero h1{font-size:clamp(26px,6.2vw,34px); line-height:1.14; margin-top:10px;}
+  .hero .loc{font-size:14.5px; color:var(--ink-soft); margin-top:8px;}
+  .price-chip{
+    margin-top:16px; display:inline-flex; align-items:baseline; gap:8px;
+    background:var(--brick); border:1px solid var(--brick-dark); border-left:4px solid var(--gold);
+    border-radius:var(--radius); padding:12px 16px;
+  }
+  .price-chip .from{font-size:11.5px; color:var(--brick-ink); opacity:.75; text-transform:uppercase; letter-spacing:.04em;}
+  .price-chip .amt{font-family:"Manrope", system-ui, sans-serif; font-weight:800; font-size:26px; color:var(--brick-ink); font-variant-numeric:tabular-nums;}
+
+  .gallery{
+    display:grid; grid-template-columns:1fr; gap:8px;
+  }
+  .gallery figure{
+    margin:0; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
+    box-shadow:0 8px 28px -18px rgba(0,0,0,.4);
+  }
+  .gallery img{display:block; width:100%; height:100%; object-fit:cover; aspect-ratio:16/9;}
+  .gallery-caption{
+    font-size:12px; color:var(--ink-faint); margin-top:8px; text-align:center;
+  }
+
+  .map-shot{
+    border-radius:10px; overflow:hidden; border:1px solid var(--line); margin-top:12px;
+  }
+  .map-shot img{display:block; width:100%; height:auto;}
+
+  .section-label{
+    font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-faint);
+  }
+
+  .spec-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px;
+  }
+  .spec{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:13px 14px; display:flex; flex-direction:column; gap:3px;
+  }
+  .spec .k{font-size:12px; color:var(--ink-faint);}
+  .spec .v{font-size:15px; font-weight:700;}
+  .spec.wide{grid-column:1 / -1;}
+  .spec.ok .v{color:var(--forest);}
+
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px;
+  }
+  .loc-card h3{font-size:16px; margin-bottom:6px;}
+  .loc-card p{margin:4px 0 0; font-size:13.5px; color:var(--ink-soft); line-height:1.5;}
+  .loc-card .coords{font-variant-numeric:tabular-nums; font-size:12.5px; color:var(--ink-faint); margin-top:6px;}
+  .map-link{
+    margin-top:12px; display:inline-flex; align-items:center; gap:6px;
+    font-size:13.5px; font-weight:600; color:var(--forest); text-decoration:none;
+    border-bottom:1px solid currentColor;
+  }
+
+  .form-card h2{font-size:19px;}
+  .form-card > p{font-size:13.5px; color:var(--ink-soft); margin:6px 0 0; line-height:1.5;}
+  .field{margin-top:14px; display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:12.5px; font-weight:600; color:var(--ink-soft);}
+  .field input, .field textarea{
+    font:inherit; font-size:15px; padding:11px 12px; border-radius:10px;
+    border:1px solid var(--line); background:var(--surface-2); color:var(--ink);
+    width:100%; resize:vertical;
+  }
+  .field input:focus, .field textarea:focus{outline:2px solid var(--brick); outline-offset:1px;}
+
+  .wa-btn{
+    margin-top:16px; display:flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--brick); color:var(--brick-ink); text-decoration:none;
+    font-weight:700; font-size:15px; padding:14px 16px; border-radius:12px;
+    border:none; text-align:center;
+  }
+  .wa-btn[aria-disabled="true"]{opacity:.55;}
+  .hint{font-size:12px; color:var(--ink-faint); margin-top:8px; text-align:center;}
+
+  .notice{
+    background:var(--forest-soft); border:1px solid var(--line); border-radius:12px;
+    padding:13px 14px; font-size:13px; color:var(--ink-soft); line-height:1.55;
+  }
+  .notice b{color:var(--forest);}
+
+  .official-btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+    text-decoration:none; font-weight:600; font-size:14px; padding:12px 14px; border-radius:12px;
+  }
+
+  footer{
+    border-top:1px solid var(--line); padding-top:16px; margin-top:6px;
+    font-size:11.5px; color:var(--ink-faint); line-height:1.6;
+  }
+  footer .contacts{font-size:13px; color:var(--ink-soft); font-weight:600; margin-bottom:8px;}
+  footer .reg{margin-top:8px;}
+
+  @media (max-width:380px){
+    .spec-grid{grid-template-columns:1fr;}
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark"><img src="logo.png" alt="Logo PIJ Property"></div>
+      <div class="brand-name">PIJ Property<small>Development</small></div>
+    </div>
+    <a class="call" href="tel:0722663666">07-226 6366</a>
+  </div>
+
+  <div class="hero">
+    <div class="badge-row">
+      <span class="badge brick">Unit Terhad</span>
+      <span class="badge">RMMJ-D</span>
+      <span class="badge">Rezab Melayu</span>
+    </div>
+    <h1>Rumah Teres 2 Tingkat di Rengit</h1>
+    <div class="loc">Taman Perbadanan Islam, Rengit (DUN Rengit) &middot; Johor Darul Ta&rsquo;zim</div>
+    <div class="price-chip">
+      <span class="from">Bermula</span>
+      <span class="amt">RM300,000</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="gallery">
+      <figure><img src="house-front.jpg" alt="Rumah teres 2 tingkat siap di Taman Perbadanan Islam, Rengit"></figure>
+    </div>
+    <div class="gallery-caption">Gambar sebenar unit siap di tapak</div>
+  </div>
+
+  <div>
+    <div class="section-label" style="margin-bottom:10px;">Spesifikasi</div>
+    <div class="spec-grid">
+      <div class="spec"><span class="k">Bilik Tidur</span><span class="v">3</span></div>
+      <div class="spec"><span class="k">Bilik Air</span><span class="v">2</span></div>
+      <div class="spec"><span class="k">Keluasan</span><span class="v">1,400 kps</span></div>
+      <div class="spec"><span class="k">Status Tanah</span><span class="v">Rezab Melayu</span></div>
+      <div class="spec ok"><span class="k">CCC</span><span class="v">Telah Diperolehi</span></div>
+      <div class="spec"><span class="k">Julat Harga</span><span class="v">RM300k&ndash;RM350k</span></div>
+    </div>
+  </div>
+
+  <div class="card loc-card">
+    <div class="section-label">Lokasi</div>
+    <h3>Bersebelahan Sekolah Agama Merlong</h3>
+    <p>83100 Rengit, Johor Darul Ta&rsquo;zim</p>
+    <div class="coords">1.672575, 103.171454</div>
+    <div class="map-shot">
+      <img src="map-satellite.jpg" alt="Peta lokasi Taman Perbadanan Islam, Rengit, bersebelahan Sekolah Agama Merlong">
+    </div>
+    <a class="map-link" href="https://maps.google.com/?q=1.672575,103.171454" target="_blank" rel="noopener">Buka di Google Maps &rarr;</a>
+  </div>
+
+  <div class="card form-card">
+    <div class="section-label">Daftar Minat</div>
+    <h2>Nak tahu lebih lanjut?</h2>
+    <p>Isi maklumat ringkas di bawah. Kami akan hubungi anda melalui WhatsApp untuk maklumat lanjut dan proses seterusnya.</p>
+
+    <form id="leadForm">
+      <div class="field">
+        <label for="lf-name">Nama Penuh</label>
+        <input id="lf-name" name="name" type="text" placeholder="Contoh: Ahmad bin Ali" required>
+      </div>
+      <div class="field">
+        <label for="lf-phone">No. Telefon</label>
+        <input id="lf-phone" name="phone" type="tel" placeholder="Contoh: 012-3456789" required>
+      </div>
+      <div class="field">
+        <label for="lf-note">Nota Tambahan (pilihan)</label>
+        <textarea id="lf-note" name="note" rows="2" placeholder="Contoh: Berminat, nak tanya proses pembiayaan"></textarea>
+      </div>
+
+      <a id="waLink" class="wa-btn" aria-disabled="true" href="#" rel="noopener">Hantar Minat Melalui WhatsApp</a>
+      <div class="hint">Ini adalah pendaftaran minat sahaja, bukan permohonan rasmi.</div>
+    </form>
+  </div>
+
+  <div class="notice">
+    <b>Permohonan rasmi</b> hanya sah melalui Portal Perbadanan Kemajuan Perumahan Negeri Johor (PKPJ). Borang WhatsApp di atas cuma untuk kami hubungi anda &mdash; ia tidak menggantikan pendaftaran rasmi.
+  </div>
+
+  <a class="official-btn" href="https://pkpj.johor.gov.my" target="_blank" rel="noopener">Daftar Rasmi di Portal PKPJ &rarr;</a>
+
+  <footer>
+    <div class="contacts">Pertanyaan: 07-226 6366 &middot; 012-4346073</div>
+    Tertakluk kepada terma dan syarat. Iklan ini telah diluluskan oleh Jabatan Perumahan Negara. Maklumat pemajuan dan iklan yang diluluskan boleh disemak di portal teduh.kpkt.gov.my.
+    <div class="reg">PIJ Property Development Sdn. Bhd. (199401037712 / 323394-D)</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var form = document.getElementById('leadForm');
+  var waLink = document.getElementById('waLink');
+  var nameEl = document.getElementById('lf-name');
+  var phoneEl = document.getElementById('lf-phone');
+  var noteEl = document.getElementById('lf-note');
+  var WA_NUMBER = "60127421250";
+
+  function buildMessage(){
+    var name = nameEl.value.trim();
+    var phone = phoneEl.value.trim();
+    var note = noteEl.value.trim();
+    var lines = [
+      "Assalamualaikum, saya berminat dengan Rumah Teres Taman Perbadanan Islam, Rengit.",
+      "Nama: " + (name || "-"),
+      "No. Telefon: " + (phone || "-")
+    ];
+    if(note){ lines.push("Nota: " + note); }
+    return lines.join("\n");
+  }
+
+  function updateLink(){
+    var valid = nameEl.value.trim().length > 0 && phoneEl.value.trim().length > 0;
+    var text = encodeURIComponent(buildMessage());
+    waLink.href = "https://wa.me/" + WA_NUMBER + "?text=" + text;
+    waLink.setAttribute('aria-disabled', valid ? 'false' : 'true');
+  }
+
+  [nameEl, phoneEl, noteEl].forEach(function(el){
+    el.addEventListener('input', updateLink);
+  });
+
+  waLink.addEventListener('click', function(e){
+    if(waLink.getAttribute('aria-disabled') === 'true'){
+      e.preventDefault();
+      (nameEl.value.trim() ? phoneEl : nameEl).focus();
+    }
+  });
+
+  form.addEventListener('submit', function(e){ e.preventDefault(); });
+
+  updateLink();
+})();
+</script>
