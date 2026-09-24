@@ -121,7 +121,14 @@
   .spec .k{font-size:12px; color:var(--ink-faint);}
   .spec .v{font-size:15px; font-weight:700;}
   .spec.wide{grid-column:1 / -1;}
-  .spec.ok .v{color:var(--forest);}
+
+  .spec.ok, .spec.price{ background:var(--brick); border-color:var(--brick-dark); }
+  .spec.ok .k, .spec.price .k{ color:var(--brick-ink); opacity:.75; }
+  .spec.ok .v, .spec.price .v{ color:var(--brick-ink); }
+
+  .spec.land{ background:var(--gold); border-color:var(--gold); }
+  .spec.land .k{ color:var(--gold-ink); opacity:.7; }
+  .spec.land .v{ color:var(--gold-ink); }
 
   .card{
     background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
@@ -221,9 +228,9 @@
       <div class="spec"><span class="k">Bilik Tidur</span><span class="v">3</span></div>
       <div class="spec"><span class="k">Bilik Air</span><span class="v">2</span></div>
       <div class="spec"><span class="k">Keluasan</span><span class="v">1,400 kps</span></div>
-      <div class="spec"><span class="k">Status Tanah</span><span class="v">Rezab Melayu</span></div>
+      <div class="spec land"><span class="k">Status Tanah</span><span class="v">Rezab Melayu</span></div>
       <div class="spec ok"><span class="k">CCC</span><span class="v">Telah Diperolehi</span></div>
-      <div class="spec"><span class="k">Julat Harga</span><span class="v">RM300k&ndash;RM350k</span></div>
+      <div class="spec price"><span class="k">Julat Harga</span><span class="v">RM300k&ndash;RM350k</span></div>
     </div>
   </div>
 
